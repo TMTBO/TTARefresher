@@ -24,7 +24,7 @@ class ViewController: UITableViewController {
     
     func prepareHeader() {
         let aview = TTARefresherHeader { 
-            print("hello world")
+            print("Hello Header")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 self.tableView.tta.header?.endRefreshing()
             })
@@ -35,7 +35,14 @@ class ViewController: UITableViewController {
     }
     
     func prepareFooter() {
-        
+        let footer = TTARefresherFooter { 
+            print("Hello Footer")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.tableView.tta.footer?.endRefreshing()
+            })
+        }
+        footer.backgroundColor = .cyan
+        tableView.tta.footer = footer
     }
 }
 

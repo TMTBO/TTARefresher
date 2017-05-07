@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - Refresher Header and Footer
+
 extension TTARefresherProxy where Base: UIScrollView {
     
     public var header: TTARefresherComponent? {
@@ -46,9 +48,47 @@ extension TTARefresherProxy where Base: UIScrollView {
     
 }
 
+// MARK: - Other
+
+extension TTARefresherProxy where Base: UIScrollView {
+    
+    public var totalDataCount: Int {
+        var totalCount = 0
+        if base.isKind(of: UITableView.self),
+            let tableView = base as? UITableView {
+            for section in 0..<tableView.numberOfSections {
+                totalCount += tableView.numberOfRows(inSection: section)
+            }
+        } else if base.isKind(of: UICollectionView.self),
+            let collectionView = base as? UICollectionView {
+            for section in 0..<collectionView.numberOfSections {
+                totalCount += collectionView.numberOfItems(inSection: section)
+            }
+        }
+        return totalCount
+    }
+    
+    var reloadDataHandler: ((Int) -> ())? {
+        get{
+            return objc_getAssociatedObject(base, &TTARefresherAssociatedKey.reloadDataHandlerKey) as? (Int) -> ()
+        }
+        set {
+            base.willChangeValue(forKey: "reloadDataHandler")
+            objc_setAssociatedObject(self, &TTARefresherAssociatedKey.reloadDataHandlerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            base.didChangeValue(forKey: "reloadDataHandler")
+        }
+    }
+    
+    func executeReloadDataHandler() {
+        reloadDataHandler?(totalDataCount)
+    }
+}
+
+
 fileprivate struct TTARefresherAssociatedKey {
     static var headerKey: Void?
     static var footerKey: Void?
+    static var reloadDataHandlerKey: Void?
 }
 
 public final class TTARefresherProxy<Base> {
