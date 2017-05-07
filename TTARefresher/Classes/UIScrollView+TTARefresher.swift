@@ -10,26 +10,50 @@ import UIKit
 
 extension TTARefresherProxy where Base: UIScrollView {
     
-    var header: UIView? {
+    public var header: TTARefresherComponent? {
         get {
-            let header = objc_getAssociatedObject(self, &TTARefresherAssociatedKey.headerKey) as? UIView
+            let header = objc_getAssociatedObject(base, &TTARefresherAssociatedKey.headerKey) as? TTARefresherComponent
             return header
         }
         
         set {
-            objc_setAssociatedObject(self, &TTARefresherAssociatedKey.headerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            guard newValue !== header else { return }
+            header?.removeFromSuperview()
+            guard let newHeader = newValue else { return }
+            base.insertSubview(newHeader, at: 0)
+            base.willChangeValue(forKey: "TTAHeader")
+            objc_setAssociatedObject(base, &TTARefresherAssociatedKey.headerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            base.didChangeValue(forKey: "TTAHeader")
+        }
+    }
+    
+    public var footer: TTARefresherComponent? {
+        get {
+            let footer = objc_getAssociatedObject(self, &TTARefresherAssociatedKey.footerKey) as? TTARefresherComponent
+            return footer
+        }
+        
+        set {
+            guard newValue !== footer else { return }
+            footer?.removeFromSuperview()
+            guard let newFooter = newValue else { return }
+            base.insertSubview(newFooter, at: 0)
+            base.willChangeValue(forKey: "TTAFooter")
+            objc_setAssociatedObject(self, &TTARefresherAssociatedKey.footerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            base.didChangeValue(forKey: "TTAFooter")
         }
     }
     
 }
 
 fileprivate struct TTARefresherAssociatedKey {
-    static var headerKey: NSString = "TTAHeaderKey"
+    static var headerKey: Void?
+    static var footerKey: Void?
 }
 
 public final class TTARefresherProxy<Base> {
     
-    public let base: Base
+    fileprivate let base: Base
     public init(_ base: Base) {
         self.base = base
     }

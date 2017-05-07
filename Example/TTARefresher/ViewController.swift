@@ -7,18 +7,45 @@
 //
 
 import UIKit
+import TTARefresher
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        prepareTableView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func prepareTableView() {
+        tableView.tableFooterView = UIView()
+        prepareHeader()
+        prepareFooter()
     }
+    
+    func prepareHeader() {
+        let aview = TTARefresherHeader { 
+            print("hello world")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.tableView.tta.header?.endRefreshing()
+            })
+        }
+//        let aview = TTARefresherHeader(refreshingTarget: self, refreshingAction: #selector(loadNew))
+        aview.backgroundColor = .red
+        tableView.tta.header = aview
+    }
+    
+    func prepareFooter() {
+        
+    }
+}
 
+extension ViewController {
+    
+    func loadNew() {
+        print("hello world")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.tableView.tta.header?.endRefreshing()
+        })
+    }
 }
 
