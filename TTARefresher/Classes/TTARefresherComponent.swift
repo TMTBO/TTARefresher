@@ -213,7 +213,7 @@ extension TTARefresherComponent {
 
 internal extension UILabel {
     
-    func ttaRefresherLabel() -> UILabel {
+    class func ttaRefresherLabel() -> UILabel {
         let label = UILabel()
         label.font = TTARefresherLabelConst.font
         label.textColor = TTARefresherLabelConst.textColor

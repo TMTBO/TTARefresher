@@ -38,10 +38,10 @@ extension ViewController {
     }
     
     func prepareFooter() {
-//        let footer = TTARefresherBackFooter {
+//        let footer = TTARefresherBackStateFooter {
 //            self.loadMore()
 //        }
-        let footer = TTARefresherBackFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+        let footer = TTARefresherBackStateFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
         footer.backgroundColor = .cyan
         tableView.tta.footer = footer
     }
@@ -50,7 +50,7 @@ extension ViewController {
 extension ViewController {
     
     func loadNew() {
-        print("hello world")
+        print("Hellow Header")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.cellText = "TTARefresher"
             self.tableView.tta.header?.endRefreshing()

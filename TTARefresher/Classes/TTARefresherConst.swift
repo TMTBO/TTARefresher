@@ -9,6 +9,7 @@
 import Foundation
 
 struct TTARefresherLabelConst {
+    static let labelLeftInset = 25.0
     static let font = UIFont.systemFont(ofSize: 14)
     static let textColor = UIColor(red: 90 / 255, green: 90 / 255, blue: 90 / 255, alpha: 1)
 }
@@ -32,4 +33,23 @@ struct TTARefresherObserverKeyPath {
 
 struct TTARefresherUserDefaultKey {
     static let lastUpdatedTime = "TTARefresherUserDefaultLastUpdatedTimeKey"
+}
+
+struct TTARefresherHeaderText {
+    static let idle = "TTARefresherHeaderTextIdle"
+    static let pulling = "TTARefresherHeaderTextPulling"
+    static let refreshing = "TTARefresherHeaderTextRefreshing"
+}
+
+struct TTARefresherAutoFooterText {
+    static let idle = "TTARefresherAutoFooterTextIdle"
+    static let refreshing = "TTARefresherAutoFooterTextRefreshing"
+    static let noMoreData = "TTARefresherAutoFooterTextNoMoreData"
+}
+
+struct TTARefresherBackFooterText {
+    static let idle = "TTARefresherBackFooterTextIdle"
+    static let pulling = "TTARefresherBackFooterTextPulling"
+    static let refreshing = "TTARefresherBackFooterTextRefreshing"
+    static let noMoreData = "TTARefresherBackFooterTextNoMoreData"
 }
