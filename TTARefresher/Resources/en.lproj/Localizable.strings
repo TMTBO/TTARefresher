@@ -1,0 +1,16 @@
+
+// TTARefresherHeaderText
+"TTARefresherHeaderTextIdle" = "Pull down to refresh";
+"TTARefresherHeaderTextPulling" = "Release to refresh";
+"TTARefresherHeaderTextRefreshing" = "Loading...";
+
+// TTARefresherAutoFooterText
+"TTARefresherAutoFooterTextIdle" = "Tap or pull up to load more";
+"TTARefresherAutoFooterTextRefreshing" = "Loading...";
+"TTARefresherAutoFooterTextNoMoreData" = "No more data";
+
+// TTARefresherBackFooterText
+"TTARefresherBackFooterTextIdle" = "Pull up to load more";
+"TTARefresherBackFooterTextPulling" = "Release to load more";
+"TTARefresherBackFooterTextRefreshing" = "Loading...";
+"TTARefresherBackFooterTextNoMoreData" = "No more data";

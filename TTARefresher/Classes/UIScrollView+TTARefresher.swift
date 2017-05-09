@@ -90,22 +90,3 @@ fileprivate struct TTARefresherAssociatedKey {
     static var footerKey: Void?
     static var reloadDataHandlerKey: Void?
 }
-
-public final class TTARefresherProxy<Base> {
-    
-    fileprivate let base: Base
-    public init(_ base: Base) {
-        self.base = base
-    }
-}
-
-public protocol TTARefresherCompatiable {}
-
-extension TTARefresherCompatiable {
-    
-    public var tta: TTARefresherProxy<Self> {
-        return TTARefresherProxy(self)
-    }
-}
-
-extension UIScrollView: TTARefresherCompatiable {}

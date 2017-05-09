@@ -32,9 +32,9 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'TTARefresher/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'TTARefresher' => ['TTARefresher/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'TTARefresher' => ['TTARefresher/Resources/*.png', 'TTARefresher/Resources/*.lproj']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

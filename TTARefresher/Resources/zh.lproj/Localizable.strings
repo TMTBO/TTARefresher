@@ -1,0 +1,16 @@
+
+// TTARefresherHeaderText
+"TTARefresherHeaderTextIdle" = "下拉可以刷新";
+"TTARefresherHeaderTextPulling" = "松开立即刷新";
+"TTARefresherHeaderTextRefreshing" = "正在刷新数据中...";
+
+// TTARefresherAutoFooterText
+"TTARefresherAutoFooterTextIdle" = "点击或上拉加载更多";
+"TTARefresherAutoFooterTextRefreshing" = "正在加载更多的数据...";
+"TTARefresherAutoFooterTextNoMoreData" = "已经全部加载完毕";
+
+// TTARefresherBackFooterText
+"TTARefresherBackFooterTextIdle" = "上拉可以加载更多";
+"TTARefresherBackFooterTextPulling" = "松开立即加载更多";
+"TTARefresherBackFooterTextRefreshing" = "正在加载更多的数据...";
+"TTARefresherBackFooterTextNoMoreData" = "经全部加载完毕";

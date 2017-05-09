@@ -18,5 +18,11 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "TTARefresher/Classes/**/*"
+  "source_files": "TTARefresher/Classes/**/*",
+  "resource_bundles": {
+    "TTARefresher": [
+      "TTARefresher/Resources/*.png",
+      "TTARefresher/Resources/*.lproj"
+    ]
+  }
 }

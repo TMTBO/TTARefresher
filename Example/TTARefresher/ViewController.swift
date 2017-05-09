@@ -42,7 +42,7 @@ extension ViewController {
 //            self.loadMore()
 //        }
         let footer = TTARefresherBackStateFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
-        footer.backgroundColor = .cyan
+        footer.backgroundColor = .cyan 
         tableView.tta.footer = footer
     }
 }

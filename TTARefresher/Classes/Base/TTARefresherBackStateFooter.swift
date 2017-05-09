@@ -48,10 +48,10 @@ extension TTARefresherBackStateFooter {
     override func prepare() {
         super.prepare()
         labelLeftInset = TTARefresherLabelConst.labelLeftInset
-        set(title: TTARefresherBackFooterText.idle, for: .idle)
-        set(title: TTARefresherBackFooterText.pulling, for: .pulling)
-        set(title: TTARefresherBackFooterText.refreshing, for: .refreshing)
-        set(title: TTARefresherBackFooterText.noMoreData, for: .noMoreData)
+        set(title: Bundle.ttaClass.localizedString(for: TTARefresherBackFooterText.idle), for: .idle)
+        set(title: Bundle.ttaClass.localizedString(for: TTARefresherBackFooterText.pulling), for: .pulling)
+        set(title: Bundle.ttaClass.localizedString(for: TTARefresherBackFooterText.refreshing), for: .refreshing)
+        set(title: Bundle.ttaClass.localizedString(for: TTARefresherBackFooterText.noMoreData), for: .noMoreData)
     }
     
     override func placeSubviews() {
