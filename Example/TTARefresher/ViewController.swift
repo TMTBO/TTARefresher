@@ -10,11 +10,17 @@ import UIKit
 import TTARefresher
 
 class ViewController: UITableViewController {
+    
+    var cellText = "TTARefresher"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareTableView()
     }
+    
+}
+
+extension ViewController {
     
     func prepareTableView() {
         tableView.tableFooterView = UIView()
@@ -23,24 +29,19 @@ class ViewController: UITableViewController {
     }
     
     func prepareHeader() {
-        let aview = TTARefresherHeader { 
-            print("Hello Header")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.tableView.tta.header?.endRefreshing()
-            })
+        let header = TTARefresherHeader {
+            self.loadNew()
         }
-//        let aview = TTARefresherHeader(refreshingTarget: self, refreshingAction: #selector(loadNew))
-        aview.backgroundColor = .red
-        tableView.tta.header = aview
+        //        let header = TTARefresherHeader(refreshingTarget: self, refreshingAction: #selector(loadNew))
+        header.backgroundColor = .red
+        tableView.tta.header = header
     }
     
     func prepareFooter() {
-        let footer = TTARefresherFooter { 
-            print("Hello Footer")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.tableView.tta.footer?.endRefreshing()
-            })
-        }
+//        let footer = TTARefresherBackFooter {
+//            self.loadMore()
+//        }
+        let footer = TTARefresherBackFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
         footer.backgroundColor = .cyan
         tableView.tta.footer = footer
     }
@@ -51,8 +52,37 @@ extension ViewController {
     func loadNew() {
         print("hello world")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.cellText = "TTARefresher"
             self.tableView.tta.header?.endRefreshing()
+            self.tableView.reloadData()
         })
+    }
+    
+    func loadMore() {
+        print("Hello Footer")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.cellText = "Hello World"
+            self.tableView.tta.footer?.endRefreshing()
+            self.tableView.reloadData()
+        })
+    }
+    
+}
+
+extension ViewController {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 15
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = cellText
+        return cell
     }
 }
 

@@ -13,6 +13,8 @@ public class TTARefresherFooter: TTARefresherComponent {
     /// If true, the footer will be shown when there are data, otherwise, footer will be hidden
     var isAutoHidden = false
     
+    var ignoredScrollViewContentInsetBottom: CGFloat = 0
+    
     public init(refreshingHandler: @escaping TTARefresherComponentRefreshingHandler) {
         super.init(frame: .zero)
         self.refreshingHandler = refreshingHandler

@@ -31,7 +31,7 @@ extension TTARefresherProxy where Base: UIScrollView {
     
     public var footer: TTARefresherComponent? {
         get {
-            let footer = objc_getAssociatedObject(self, &TTARefresherAssociatedKey.footerKey) as? TTARefresherComponent
+            let footer = objc_getAssociatedObject(base, &TTARefresherAssociatedKey.footerKey) as? TTARefresherComponent
             return footer
         }
         
@@ -41,7 +41,7 @@ extension TTARefresherProxy where Base: UIScrollView {
             guard let newFooter = newValue else { return }
             base.insertSubview(newFooter, at: 0)
             base.willChangeValue(forKey: "TTAFooter")
-            objc_setAssociatedObject(self, &TTARefresherAssociatedKey.footerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(base, &TTARefresherAssociatedKey.footerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             base.didChangeValue(forKey: "TTAFooter")
         }
     }
