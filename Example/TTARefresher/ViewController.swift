@@ -29,13 +29,28 @@ extension ViewController {
     }
     
     func prepareHeader() {
-        let header = TTARefresherNormalHeader {
+        let header = TTARefresherGifHeader {
             self.loadNew()
         }
-        //        let header = TTARefresherStateHeader(refreshingTarget: self, refreshingAction: #selector(loadNew))
+//        let header = TTARefresherStateHeader(refreshingTarget: self, refreshingAction: #selector(loadNew))
 //        header.backgroundColor = .red
-//        header.stateLabel.isHidden = true
-//        header.lastUpdatedTimeLabel.isHidden = true
+        header.stateLabel.isHidden = true
+        header.lastUpdatedTimeLabel.isHidden = true
+        header.labelLeftInset = 10
+        var idleImages = [UIImage]()
+        for index in 1...60 {
+            let imageName = "dropdown_anim__000\(index)"
+            guard let image = UIImage(named: imageName) else { continue }
+            idleImages.append(image)
+        }
+        var refreshingImages = [UIImage]()
+        for index in 1...3 {
+            let imageName = "dropdown_loading_0\(index)"
+            guard let image = UIImage(named: imageName) else { continue }
+            refreshingImages.append(image)
+        }
+        header.set(images: idleImages, for: .idle)
+        header.set(images: refreshingImages, for: .refreshing)
         tableView.tta.header = header
     }
     

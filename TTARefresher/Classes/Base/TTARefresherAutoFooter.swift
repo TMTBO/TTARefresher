@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class TTARefresherAutoFooter: TTARefresherFooter {
+open class TTARefresherAutoFooter: TTARefresherFooter {
 
     var isAutoRefresh = true
     /// The percent when the footer appear will get refresh, default is 1.0
     var triggerAutoRefreshPercent: CGFloat = 1.0
     
-    public override var state: TTARefresherState {
+    open override var state: TTARefresherState {
         didSet {
             if state == oldValue { return }
             if state == .refreshing {
@@ -30,7 +30,7 @@ public class TTARefresherAutoFooter: TTARefresherFooter {
         }
     }
     
-    public override var isHidden: Bool {
+    open override var isHidden: Bool {
         didSet {
             if !oldValue && isHidden {
                 state = .idle
@@ -43,7 +43,7 @@ public class TTARefresherAutoFooter: TTARefresherFooter {
         }
     }
  
-    override public func willMove(toSuperview newSuperview: UIView?) {
+    override open func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         guard let scrollView = scrollView else { return }
         if let _ = newSuperview {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TTARefresherFooter: TTARefresherComponent {
+open class TTARefresherFooter: TTARefresherComponent {
     
     /// If true, the footer will be shown when there are data, otherwise, footer will be hidden
     var isAutoHidden = false
@@ -40,7 +40,7 @@ extension TTARefresherFooter {
         bounds.size.height = TTARefresherFrameConst.footerHeight
     }
     
-    public override func willMove(toSuperview newSuperview: UIView?) {
+    open override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         guard newSuperview != nil,
             let scrollView = scrollView else { return }

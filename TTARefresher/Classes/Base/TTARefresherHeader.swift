@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TTARefresherHeader: TTARefresherComponent {
+open class TTARefresherHeader: TTARefresherComponent {
     
     fileprivate var insetTopDelta: CGFloat = 0
     
@@ -16,7 +16,7 @@ public class TTARefresherHeader: TTARefresherComponent {
         return UserDefaults.standard.object(forKey: TTARefresherUserDefaultKey.lastUpdatedTime) as? Date
     }
     
-    override public var state: TTARefresherState {
+    override open var state: TTARefresherState {
         didSet {
             if state == oldValue { return }
             

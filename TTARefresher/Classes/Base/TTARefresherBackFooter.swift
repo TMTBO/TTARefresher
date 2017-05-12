@@ -8,12 +8,12 @@
 
 import UIKit
 
-public class TTARefresherBackFooter: TTARefresherFooter {
+open class TTARefresherBackFooter: TTARefresherFooter {
     
     var lastRefreshCount = 0
     var lastBottomDelta: CGFloat = 0
     
-    override public var state: TTARefresherState {
+    override open var state: TTARefresherState {
         didSet {
             if state == oldValue { return }
             guard let scrollView = scrollView else { return }
@@ -54,7 +54,7 @@ public class TTARefresherBackFooter: TTARefresherFooter {
         }
     }
 
-    override public func willMove(toSuperview newSuperview: UIView?) {
+    override open func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         scrollViewContentSizeDidChange(nil)
     }

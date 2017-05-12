@@ -17,7 +17,7 @@ public class TTARefresherNormalHeader: TTARefresherStateHeader {
         }
     }
 
-    lazy var arrowImageView: UIImageView = {
+    public lazy var arrowImageView: UIImageView = {
         let arrowImage = Bundle.ttaClass.arrowImage()
         let arrowImageView = UIImageView(image: arrowImage)
         self.addSubview(arrowImageView)

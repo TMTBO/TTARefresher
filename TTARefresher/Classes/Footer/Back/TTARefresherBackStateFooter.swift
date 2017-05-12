@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TTARefresherBackStateFooter: TTARefresherBackFooter {
+open class TTARefresherBackStateFooter: TTARefresherBackFooter {
     
     lazy var stateLabel: UILabel = {
         let label = UILabel.ttaRefresherLabel()
@@ -19,7 +19,7 @@ public class TTARefresherBackStateFooter: TTARefresherBackFooter {
     
     var labelLeftInset = TTARefresherLabelConst.labelLeftInset
     
-    public override var state: TTARefresherState {
+    open override var state: TTARefresherState {
         didSet {
             if state == oldValue { return }
             stateLabel.text = stateTitles[state]

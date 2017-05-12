@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TTARefresherAutoStateFooter: TTARefresherAutoFooter {
+open class TTARefresherAutoStateFooter: TTARefresherAutoFooter {
 
     lazy var stateLabel: UILabel = {
         let label = UILabel.ttaRefresherLabel()
@@ -19,7 +19,7 @@ public class TTARefresherAutoStateFooter: TTARefresherAutoFooter {
     var labelLeftInset = TTARefresherLabelConst.labelLeftInset
     var isRefreshingTitleHidden = false
     
-    public override var state: TTARefresherState {
+    open override var state: TTARefresherState {
         didSet {
             if state == oldValue { return }
             if isRefreshingTitleHidden && state == .refreshing {

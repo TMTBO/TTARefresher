@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TTARefresherStateHeader: TTARefresherHeader {
+open class TTARefresherStateHeader: TTARefresherHeader {
 
     public lazy var stateLabel: UILabel = {
         let label = UILabel.ttaRefresherLabel()
@@ -17,7 +17,8 @@ public class TTARefresherStateHeader: TTARefresherHeader {
     }()
     var stateTitles = [TTARefresherState: String]()
     
-    var labelLeftInset = TTARefresherLabelConst.labelLeftInset
+    /// The margin between Label and left images
+    public var labelLeftInset = TTARefresherLabelConst.labelLeftInset
     
     public lazy var lastUpdatedTimeLabel: UILabel = {
         let label = UILabel.ttaRefresherLabel()
@@ -27,7 +28,7 @@ public class TTARefresherStateHeader: TTARefresherHeader {
     
     var lastUpdatedTimeTextHandler: ((Date) -> String)?
 
-    public override var state: TTARefresherState {
+    open override var state: TTARefresherState {
         didSet {
             if state == oldValue { return }
             stateLabel.text = stateTitles[state]

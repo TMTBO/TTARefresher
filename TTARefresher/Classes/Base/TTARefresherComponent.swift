@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// Refresher Stares
+/// Refresher States
 public enum TTARefresherState: Int {
     case idle = 1, pulling, refreshing, willRefresh, noMoreData
 }
@@ -18,9 +18,9 @@ public typealias TTARefresherComponentBeginCompletionHandler = () -> ()
 public typealias TTARefresherComponentEndCompletionHandler = () -> ()
 
 /// The Refresher Base Component
-public class TTARefresherComponent: UIView {
+open class TTARefresherComponent: UIView {
     
-    public var state: TTARefresherState = .idle {
+    open var state: TTARefresherState = .idle {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.setNeedsLayout()
@@ -86,18 +86,18 @@ public class TTARefresherComponent: UIView {
 
 extension TTARefresherComponent {
     
-    override public func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         super.draw(rect)
         guard state == .willRefresh else { return }
         state = .refreshing
     }
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         placeSubviews()
         super.layoutSubviews()
     }
     
-    override public func willMove(toSuperview newSuperview: UIView?) {
+    override open func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         guard let isScrollView = newSuperview?.isKind(of: UIScrollView.self),
                 newSuperview != nil && isScrollView == true else { return }
@@ -156,6 +156,8 @@ extension TTARefresherComponent {
     public func endRefreshing(_ completionHandler: TTARefresherComponentEndCompletionHandler? = nil) {
         endRefreshingCompletionHandler = completionHandler
         state = .idle
+        
+        scrollView?.tta.executeReloadDataHandler()
     }
 }
 
@@ -197,7 +199,7 @@ extension TTARefresherComponent {
         pan = nil
     }
     
-    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard isUserInteractionEnabled else { return }
         if keyPath == TTARefresherObserverKeyPath.contentSize {
             scrollViewContentSizeDidChange(change)
