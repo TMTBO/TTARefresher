@@ -38,10 +38,10 @@ extension ViewController {
     }
     
     func prepareFooter() {
-//        let footer = TTARefresherBackStateFooter {
+//        let footer = TTARefresherAutoFooter {
 //            self.loadMore()
 //        }
-        let footer = TTARefresherBackStateFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+        let footer = TTARefresherAutoFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
         footer.backgroundColor = .cyan 
         tableView.tta.footer = footer
     }
@@ -76,7 +76,7 @@ extension ViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
