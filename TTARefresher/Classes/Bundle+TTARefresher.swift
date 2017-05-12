@@ -15,7 +15,6 @@ extension TTARefresherProxy where Base: Bundle {
             let bundle = Bundle(path: path) else {
             fatalError("Can NOT find the Bundle, named: TTARefresher.bundle")
         }
-        print(path)
         return bundle
     }
 

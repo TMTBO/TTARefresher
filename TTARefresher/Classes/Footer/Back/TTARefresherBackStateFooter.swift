@@ -59,5 +59,4 @@ extension TTARefresherBackStateFooter {
         if stateLabel.constraints.count != 0 { return }
         stateLabel.frame = bounds
     }
-
 }
