@@ -14,3 +14,8 @@
 "TTARefresherBackFooterTextPulling" = "松开立即加载更多";
 "TTARefresherBackFooterTextRefreshing" = "正在加载更多的数据...";
 "TTARefresherBackFooterTextNoMoreData" = "经全部加载完毕";
+
+// TARefresherHeaderDateText
+"TTARefresherHeaderDateLastTimeText" = "最后更新：";
+"TTARefresherHeaderDateTodayText" = "今天";
+"TTARefresherHeaderNoneLastDateText" = "无记录";

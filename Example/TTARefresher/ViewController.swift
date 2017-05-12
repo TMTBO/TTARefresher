@@ -29,20 +29,20 @@ extension ViewController {
     }
     
     func prepareHeader() {
-        let header = TTARefresherHeader {
+        let header = TTARefresherStateHeader {
             self.loadNew()
         }
-        //        let header = TTARefresherHeader(refreshingTarget: self, refreshingAction: #selector(loadNew))
-        header.backgroundColor = .red
+        //        let header = TTARefresherStateHeader(refreshingTarget: self, refreshingAction: #selector(loadNew))
+//        header.backgroundColor = .red
         tableView.tta.header = header
     }
     
     func prepareFooter() {
-//        let footer = TTARefresherAutoFooter {
+//        let footer = TTARefresherAutoStateFooter {
 //            self.loadMore()
 //        }
         let footer = TTARefresherAutoStateFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
-        footer.backgroundColor = .cyan 
+//        footer.backgroundColor = .cyan 
         tableView.tta.footer = footer
     }
 }
@@ -51,7 +51,7 @@ extension ViewController {
     
     func loadNew() {
         print("Hello Header")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             self.cellText = "TTARefresher"
             self.tableView.tta.header?.endRefreshing()
             self.tableView.reloadData()

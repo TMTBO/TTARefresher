@@ -17,7 +17,7 @@ public class TTARefresherBackStateFooter: TTARefresherBackFooter {
     }()
     var stateTitles = [TTARefresherState: String]()
     
-    var labelLeftInset = 0.0
+    var labelLeftInset = TTARefresherLabelConst.labelLeftInset
     
     public override var state: TTARefresherState {
         didSet {

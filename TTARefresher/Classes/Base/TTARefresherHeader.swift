@@ -12,6 +12,10 @@ public class TTARefresherHeader: TTARefresherComponent {
     
     fileprivate var insetTopDelta: CGFloat = 0
     
+    var lastUpdatedTime: Date? {
+        return UserDefaults.standard.object(forKey: TTARefresherUserDefaultKey.lastUpdatedTime) as? Date
+    }
+    
     override public var state: TTARefresherState {
         didSet {
             if state == oldValue { return }
@@ -62,12 +66,32 @@ public class TTARefresherHeader: TTARefresherComponent {
     }
 }
 
+// MARK: - Public Methods
+
+extension TTARefresherHeader {
+    
+    public override func endRefreshing(_ completionHandler: TTARefresherComponentEndCompletionHandler?) {
+        DispatchQueue.main.async { [weak self] in
+            guard let `self` = self else { return }
+            self.state = .idle
+        }
+    }
+}
+
+// MARK: - Private Methods
+
+extension TTARefresherHeader {
+    
+    func recorrectLastUpdatedTime() {} 
+}
+
 // MARK: - Override Methods
 
 extension TTARefresherHeader {
     
     override func prepare() {
         super.prepare()
+        recorrectLastUpdatedTime()
         bounds.size.height = TTARefresherFrameConst.headerHeight
     }
     
@@ -108,13 +132,6 @@ extension TTARefresherHeader {
             beginRefreshing()
         } else if pullingPercent < 1 {
             self.pullingPercent = pullingPercent
-        }
-    }
-    
-    public override func endRefreshing(_ completionHandler: TTARefresherComponentEndCompletionHandler?) {
-        DispatchQueue.main.async { [weak self] in
-            guard let `self` = self else { return }
-            self.state = .idle
         }
     }
 }

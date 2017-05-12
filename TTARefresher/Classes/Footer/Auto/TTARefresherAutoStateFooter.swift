@@ -16,7 +16,7 @@ public class TTARefresherAutoStateFooter: TTARefresherAutoFooter {
         return label
     }()
     var stateTitles = [TTARefresherState: String]()
-    var labelLeftInset = 0.0
+    var labelLeftInset = TTARefresherLabelConst.labelLeftInset
     var isRefreshingTitleHidden = false
     
     public override var state: TTARefresherState {

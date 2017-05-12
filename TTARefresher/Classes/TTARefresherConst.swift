@@ -35,6 +35,12 @@ struct TTARefresherUserDefaultKey {
     static let lastUpdatedTime = "TTARefresherUserDefaultLastUpdatedTimeKey"
 }
 
+struct TTARefresherHeaderDateText {
+    static let lastTime = "TTARefresherHeaderDateLastTimeText"
+    static let dateToday = "TTARefresherHeaderDateTodayText"
+    static let noneLastDate = "TTARefresherHeaderNoneLastDateText"
+}
+
 struct TTARefresherHeaderText {
     static let idle = "TTARefresherHeaderTextIdle"
     static let pulling = "TTARefresherHeaderTextPulling"
