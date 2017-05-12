@@ -29,11 +29,13 @@ extension ViewController {
     }
     
     func prepareHeader() {
-        let header = TTARefresherStateHeader {
+        let header = TTARefresherNormalHeader {
             self.loadNew()
         }
         //        let header = TTARefresherStateHeader(refreshingTarget: self, refreshingAction: #selector(loadNew))
 //        header.backgroundColor = .red
+//        header.stateLabel.isHidden = true
+//        header.lastUpdatedTimeLabel.isHidden = true
         tableView.tta.header = header
     }
     

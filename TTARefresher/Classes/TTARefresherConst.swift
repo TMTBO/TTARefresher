@@ -9,7 +9,7 @@
 import Foundation
 
 struct TTARefresherLabelConst {
-    static let labelLeftInset = 25.0
+    static let labelLeftInset: CGFloat = 25.0
     static let font = UIFont.systemFont(ofSize: 14)
     static let textColor = UIColor(red: 90 / 255, green: 90 / 255, blue: 90 / 255, alpha: 1)
 }

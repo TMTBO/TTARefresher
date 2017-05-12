@@ -10,7 +10,7 @@ import UIKit
 
 public class TTARefresherStateHeader: TTARefresherHeader {
 
-    lazy var stateLabel: UILabel = {
+    public lazy var stateLabel: UILabel = {
         let label = UILabel.ttaRefresherLabel()
         self.addSubview(label)
         return label
@@ -19,7 +19,7 @@ public class TTARefresherStateHeader: TTARefresherHeader {
     
     var labelLeftInset = TTARefresherLabelConst.labelLeftInset
     
-    lazy var lastUpdatedTimeLabel: UILabel = {
+    public lazy var lastUpdatedTimeLabel: UILabel = {
         let label = UILabel.ttaRefresherLabel()
         self.addSubview(label)
         return label
