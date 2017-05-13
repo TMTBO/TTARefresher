@@ -45,7 +45,7 @@ extension TTARefresherFooter {
         guard newSuperview != nil,
             let scrollView = scrollView else { return }
         if scrollView.isKind(of: UITableView.self) || scrollView.isKind(of: UICollectionView.self) {
-            scrollView.tta.reloadDataHandler = { [weak self] (totalDataCount) in
+            scrollView.ttaRefresher.reloadDataHandler = { [weak self] (totalDataCount) in
                 guard let `self` = self,
                     self.isAutoHidden else { return }
                 self.isHidden = totalDataCount == 0

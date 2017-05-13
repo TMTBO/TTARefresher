@@ -11,7 +11,7 @@ import UIKit
 open class TTARefresherBackStateFooter: TTARefresherBackFooter {
     
     lazy var stateLabel: UILabel = {
-        let label = UILabel.ttaRefresherLabel()
+        let label = UILabel.TTARefresher.refresherLabel()
         self.addSubview(label)
         return label
     }()
@@ -48,10 +48,10 @@ extension TTARefresherBackStateFooter {
     override func prepare() {
         super.prepare()
         labelLeftInset = TTARefresherLabelConst.labelLeftInset
-        set(title: Bundle.ttaClass.localizedString(for: TTARefresherBackFooterText.idle), for: .idle)
-        set(title: Bundle.ttaClass.localizedString(for: TTARefresherBackFooterText.pulling), for: .pulling)
-        set(title: Bundle.ttaClass.localizedString(for: TTARefresherBackFooterText.refreshing), for: .refreshing)
-        set(title: Bundle.ttaClass.localizedString(for: TTARefresherBackFooterText.noMoreData), for: .noMoreData)
+        set(title: Bundle.TTARefresher.localizedString(for: TTARefresherBackFooterText.idle), for: .idle)
+        set(title: Bundle.TTARefresher.localizedString(for: TTARefresherBackFooterText.pulling), for: .pulling)
+        set(title: Bundle.TTARefresher.localizedString(for: TTARefresherBackFooterText.refreshing), for: .refreshing)
+        set(title: Bundle.TTARefresher.localizedString(for: TTARefresherBackFooterText.noMoreData), for: .noMoreData)
     }
     
     override func placeSubviews() {

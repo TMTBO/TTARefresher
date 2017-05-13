@@ -32,11 +32,11 @@ open class TTARefresherBackFooter: TTARefresherFooter {
                     
                 }
                 let deltaHeihgt = heightForContentBreakView()
-                if oldValue == .refreshing && deltaHeihgt > 0 && scrollView.tta.totalDataCount != lastRefreshCount {
+                if oldValue == .refreshing && deltaHeihgt > 0 && scrollView.ttaRefresher.totalDataCount != lastRefreshCount {
                     scrollView.contentOffset.y = scrollView.contentOffset.y
                 }
             } else if state == .refreshing {
-                lastRefreshCount = scrollView.tta.totalDataCount
+                lastRefreshCount = scrollView.ttaRefresher.totalDataCount
                 
                 UIView.animate(withDuration: TTARefresherAnimationDuration.fast, animations: { [weak self] in
                     guard let `self` = self else { return }

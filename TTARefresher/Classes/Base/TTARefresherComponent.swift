@@ -157,7 +157,7 @@ extension TTARefresherComponent {
         endRefreshingCompletionHandler = completionHandler
         state = .idle
         
-        scrollView?.tta.executeReloadDataHandler()
+        scrollView?.ttaRefresher.executeReloadDataHandler()
     }
 }
 
@@ -210,25 +210,5 @@ extension TTARefresherComponent {
         } else if keyPath == TTARefresherObserverKeyPath.panState {
             scrollViewPanStateDidChange(change)
         }
-    }
-}
-
-internal extension UILabel {
-    
-    class func ttaRefresherLabel() -> UILabel {
-        let label = UILabel()
-        label.font = TTARefresherLabelConst.font
-        label.textColor = TTARefresherLabelConst.textColor
-        label.autoresizingMask = .flexibleWidth
-        label.textAlignment = .center
-        label.backgroundColor = .clear
-        return label
-    }
-    
-    func ttaRefresherWidth() -> CGFloat {
-        let size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
-        guard let text = text else { return 0 }
-        let width = (text as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil).width
-        return width
     }
 }

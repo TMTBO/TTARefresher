@@ -92,10 +92,10 @@ extension TTARefresherGifHeader {
         } else {
             gifImageView.contentMode = .right
             
-            let stateWidth = stateLabel.ttaRefresherWidth()
+            let stateWidth = stateLabel.ttaRefresher.refresherWidth()
             var timeWidth: CGFloat = 0
             if !lastUpdatedTimeLabel.isHidden {
-                timeWidth = lastUpdatedTimeLabel.ttaRefresherWidth()
+                timeWidth = lastUpdatedTimeLabel.ttaRefresher.refresherWidth()
             }
             let textWidth = max(stateWidth, timeWidth)
             gifImageView.frame.size.width = bounds.width * 0.5 - textWidth * 0.5 - labelLeftInset

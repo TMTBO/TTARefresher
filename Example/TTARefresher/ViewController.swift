@@ -34,8 +34,8 @@ extension ViewController {
         }
 //        let header = TTARefresherStateHeader(refreshingTarget: self, refreshingAction: #selector(loadNew))
 //        header.backgroundColor = .red
-        header.stateLabel.isHidden = true
-        header.lastUpdatedTimeLabel.isHidden = true
+//        header.stateLabel.isHidden = true
+//        header.lastUpdatedTimeLabel.isHidden = true
         header.labelLeftInset = 10
         var idleImages = [UIImage]()
         for index in 1...60 {
@@ -51,7 +51,7 @@ extension ViewController {
         }
         header.set(images: idleImages, for: .idle)
         header.set(images: refreshingImages, for: .refreshing)
-        tableView.tta.header = header
+        tableView.ttaRefresher.header = header
     }
     
     func prepareFooter() {
@@ -60,7 +60,7 @@ extension ViewController {
 //        }
         let footer = TTARefresherAutoStateFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
 //        footer.backgroundColor = .cyan 
-        tableView.tta.footer = footer
+        tableView.ttaRefresher.footer = footer
     }
 }
 
@@ -70,7 +70,7 @@ extension ViewController {
         print("Hello Header")
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             self.cellText = "TTARefresher"
-            self.tableView.tta.header?.endRefreshing()
+            self.tableView.ttaRefresher.header?.endRefreshing()
             self.tableView.reloadData()
         })
     }
@@ -79,7 +79,7 @@ extension ViewController {
         print("Hello Footer")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.cellText = "Hello World"
-            self.tableView.tta.footer?.endRefreshing()
+            self.tableView.ttaRefresher.footer?.endRefreshing()
             self.tableView.reloadData()
         })
     }

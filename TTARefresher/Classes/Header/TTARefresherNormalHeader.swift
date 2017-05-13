@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TTARefresherNormalHeader: TTARefresherStateHeader {
+open class TTARefresherNormalHeader: TTARefresherStateHeader {
     
     public var indicatotStyle = UIActivityIndicatorViewStyle.gray {
         didSet {
@@ -18,7 +18,7 @@ public class TTARefresherNormalHeader: TTARefresherStateHeader {
     }
 
     public lazy var arrowImageView: UIImageView = {
-        let arrowImage = Bundle.ttaClass.arrowImage()
+        let arrowImage = Bundle.TTARefresher.arrowImage()
         let arrowImageView = UIImageView(image: arrowImage)
         self.addSubview(arrowImageView)
         return arrowImageView
@@ -30,7 +30,7 @@ public class TTARefresherNormalHeader: TTARefresherStateHeader {
         return indicator
     }()
     
-    public override var state: TTARefresherState {
+    open override var state: TTARefresherState {
         didSet {
             if oldValue == state { return }
             if state == .idle {
@@ -78,10 +78,10 @@ extension TTARefresherNormalHeader {
         super.placeSubviews()
         var arrowCenterX = bounds.width * 0.5
         if !stateLabel.isHidden {
-            let stateWidth = stateLabel.ttaRefresherWidth()
+            let stateWidth = stateLabel.ttaRefresher.refresherWidth()
             var timeWidth: CGFloat = 0
             if !lastUpdatedTimeLabel.isHidden {
-                timeWidth = lastUpdatedTimeLabel.ttaRefresherWidth()
+                timeWidth = lastUpdatedTimeLabel.ttaRefresher.refresherWidth()
             }
             let textWidth = max(stateWidth, timeWidth)
             arrowCenterX -= textWidth / 2 + labelLeftInset

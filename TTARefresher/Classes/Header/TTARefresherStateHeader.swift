@@ -11,7 +11,7 @@ import UIKit
 open class TTARefresherStateHeader: TTARefresherHeader {
 
     public lazy var stateLabel: UILabel = {
-        let label = UILabel.ttaRefresherLabel()
+        let label = UILabel.TTARefresher.refresherLabel()
         self.addSubview(label)
         return label
     }()
@@ -21,7 +21,7 @@ open class TTARefresherStateHeader: TTARefresherHeader {
     public var labelLeftInset = TTARefresherLabelConst.labelLeftInset
     
     public lazy var lastUpdatedTimeLabel: UILabel = {
-        let label = UILabel.ttaRefresherLabel()
+        let label = UILabel.TTARefresher.refresherLabel()
         self.addSubview(label)
         return label
     }()
@@ -91,19 +91,19 @@ extension TTARefresherStateHeader {
             let time = formatter.string(from: lastUpdatedTime)
             
             // Show Date
-            let lastTime = Bundle.ttaClass.localizedString(for: TTARefresherHeaderDateText.lastTime)
-            let todayTime = isToday ? Bundle.ttaClass.localizedString(for: TTARefresherHeaderDateText.dateToday) : ""
+            let lastTime = Bundle.TTARefresher.localizedString(for: TTARefresherHeaderDateText.lastTime)
+            let todayTime = isToday ? Bundle.TTARefresher.localizedString(for: TTARefresherHeaderDateText.dateToday) : ""
             lastUpdatedTimeLabel.text = lastTime + todayTime + time
         } else {
-            lastUpdatedTimeLabel.text = Bundle.ttaClass.localizedString(for: TTARefresherHeaderDateText.lastTime) + Bundle.ttaClass.localizedString(for: TTARefresherHeaderDateText.noneLastDate)
+            lastUpdatedTimeLabel.text = Bundle.TTARefresher.localizedString(for: TTARefresherHeaderDateText.lastTime) + Bundle.TTARefresher.localizedString(for: TTARefresherHeaderDateText.noneLastDate)
         }
     }
     
     override func prepare() {
         super.prepare()
-        set(title: Bundle.ttaClass.localizedString(for: TTARefresherHeaderText.idle), for: .idle)
-        set(title: Bundle.ttaClass.localizedString(for: TTARefresherHeaderText.pulling), for: .pulling)
-        set(title: Bundle.ttaClass.localizedString(for: TTARefresherHeaderText.refreshing), for: .refreshing)
+        set(title: Bundle.TTARefresher.localizedString(for: TTARefresherHeaderText.idle), for: .idle)
+        set(title: Bundle.TTARefresher.localizedString(for: TTARefresherHeaderText.pulling), for: .pulling)
+        set(title: Bundle.TTARefresher.localizedString(for: TTARefresherHeaderText.refreshing), for: .refreshing)
     }
 
     override func placeSubviews() {

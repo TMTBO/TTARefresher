@@ -11,7 +11,7 @@ import UIKit
 open class TTARefresherAutoStateFooter: TTARefresherAutoFooter {
 
     lazy var stateLabel: UILabel = {
-        let label = UILabel.ttaRefresherLabel()
+        let label = UILabel.TTARefresher.refresherLabel()
         self.addSubview(label)
         return label
     }()
@@ -57,9 +57,9 @@ extension TTARefresherAutoStateFooter {
     override func prepare() {
         super.prepare()
         labelLeftInset = TTARefresherLabelConst.labelLeftInset
-        set(title: Bundle.ttaClass.localizedString(for: TTARefresherAutoFooterText.idle), for: .idle)
-        set(title: Bundle.ttaClass.localizedString(for: TTARefresherAutoFooterText.refreshing), for: .refreshing)
-        set(title: Bundle.ttaClass.localizedString(for: TTARefresherAutoFooterText.noMoreData), for: .noMoreData)
+        set(title: Bundle.TTARefresher.localizedString(for: TTARefresherAutoFooterText.idle), for: .idle)
+        set(title: Bundle.TTARefresher.localizedString(for: TTARefresherAutoFooterText.refreshing), for: .refreshing)
+        set(title: Bundle.TTARefresher.localizedString(for: TTARefresherAutoFooterText.noMoreData), for: .noMoreData)
         stateLabel.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(didClickStateLabel))
         stateLabel.addGestureRecognizer(tap)

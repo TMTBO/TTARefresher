@@ -20,14 +20,15 @@ public protocol TTARefresherCompatiable {}
 
 extension TTARefresherCompatiable {
     
-    public var tta: TTARefresherProxy<Self> {
+    public var ttaRefresher: TTARefresherProxy<Self> {
         return TTARefresherProxy(self)
     }
     
-    public static var ttaClass: TTARefresherProxy<Self>.Type {
+    public static var TTARefresher: TTARefresherProxy<Self>.Type {
         return TTARefresherProxy.self
     }
 }
 
 extension UIScrollView: TTARefresherCompatiable {}
+extension UILabel: TTARefresherCompatiable {}
 extension Bundle: TTARefresherCompatiable {}
