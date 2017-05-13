@@ -20,7 +20,7 @@ extension TTARefresherProxy where Base: UILabel {
         return label
     }
     
-    func refresherWidth() -> CGFloat {
+    func textWidth() -> CGFloat {
         let size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
         guard let text = base.text else { return 0 }
         let width = (text as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: base.font], context: nil).width

@@ -78,10 +78,10 @@ extension TTARefresherNormalHeader {
         super.placeSubviews()
         var arrowCenterX = bounds.width * 0.5
         if !stateLabel.isHidden {
-            let stateWidth = stateLabel.ttaRefresher.refresherWidth()
+            let stateWidth = stateLabel.ttaRefresher.textWidth()
             var timeWidth: CGFloat = 0
             if !lastUpdatedTimeLabel.isHidden {
-                timeWidth = lastUpdatedTimeLabel.ttaRefresher.refresherWidth()
+                timeWidth = lastUpdatedTimeLabel.ttaRefresher.textWidth()
             }
             let textWidth = max(stateWidth, timeWidth)
             arrowCenterX -= textWidth / 2 + labelLeftInset

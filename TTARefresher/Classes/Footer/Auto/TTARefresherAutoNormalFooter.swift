@@ -19,8 +19,36 @@ open class TTARefresherAutoNormalFooter: TTARefresherAutoStateFooter {
 
     lazy var loadingView: UIActivityIndicatorView? = {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: self.indicatotStyle)
+        indicator.hidesWhenStopped = true
         self.addSubview(indicator)
         return indicator
     }()
+    
+    open override var state: TTARefresherState {
+        didSet {
+            if oldValue == state { return }
+            if state == .noMoreData || state == .idle {
+                loadingView?.stopAnimating()
+            } else if state == .refreshing {
+                loadingView?.startAnimating()
+            }
+        }
+    }
+}
 
+// MARK: - Override Methods
+
+extension TTARefresherAutoNormalFooter {
+    
+    override func placeSubviews() {
+        super.placeSubviews()
+        if loadingView?.constraints.count != 0 { return }
+        var loadingCenterX = bounds.width * 0.5
+        if !isRefreshingTitleHidden {
+            loadingCenterX -= stateLabel.ttaRefresher.textWidth() * 0.5 + labelLeftInset
+        }
+        let loadingCenterY = bounds.height * 0.5
+        loadingView?.center = CGPoint(x: loadingCenterX, y: loadingCenterY)
+    }
+ 
 }

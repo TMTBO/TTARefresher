@@ -1,14 +1,14 @@
 //
-//  TTARefresherGifHeader.swift
+//  TTARefresherAutoGifFooter.swift
 //  Pods
 //
-//  Created by TobyoTenma on 12/05/2017.
+//  Created by TobyoTenma on 13/05/2017.
 //
 //
 
 import UIKit
 
-open class TTARefresherGifHeader: TTARefresherStateHeader {
+open class TTARefresherAutoGifFooter: TTARefresherAutoStateFooter {
 
     open lazy var gifImageView: UIImageView = {
         let gifImageView = UIImageView()
@@ -19,35 +19,25 @@ open class TTARefresherGifHeader: TTARefresherStateHeader {
     lazy var stateImages: [TTARefresherState: [UIImage]] = [:]
     lazy var stateDurations: [TTARefresherState: TimeInterval] = [:]
 
-    override open var pullingPercent: CGFloat {
-        didSet {
-            guard let images = stateImages[.idle] else { return }
-            if state != .idle || images.count == 0 { return }
-            gifImageView.stopAnimating()
-            var index = CGFloat(images.count) * pullingPercent
-            if index >= CGFloat(images.count) {
-                index = CGFloat(images.count) - 1
-            }
-            gifImageView.image = images[Int(index)]
-        }
-    }
-    
-    override open var state: TTARefresherState {
+    open override var state: TTARefresherState {
         didSet {
             if oldValue == state { return }
-            if state == .pulling || state == .refreshing {
+            if state == .refreshing {
                 guard let images = stateImages[state],
-                    images.count != 0  else { return }
+                    images.count != 0 else { return }
                 gifImageView.stopAnimating()
-                if images.count == 1 { // Single Image
+                
+                gifImageView.isHidden = false
+                if images.count == 1 { // Sigle image
                     gifImageView.image = images.last
-                } else { // More than one image
+                } else { // More than one images
                     gifImageView.animationImages = images
                     gifImageView.animationDuration = stateDurations[state] ?? Double(images.count) * 0.1
                     gifImageView.startAnimating()
                 }
-            } else if state == .idle {
+            } else if state == .noMoreData || state == .idle {
                 gifImageView.stopAnimating()
+                gifImageView.isHidden = true
             }
         }
     }
@@ -55,8 +45,8 @@ open class TTARefresherGifHeader: TTARefresherStateHeader {
 
 // MARK: - Public Methods
 
-extension TTARefresherGifHeader {
-
+extension TTARefresherAutoGifFooter {
+    
     public func set(images: [UIImage]?, duration: TimeInterval?, for state: TTARefresherState) {
         guard let images = images,
             let duration = duration else { return }
@@ -76,7 +66,7 @@ extension TTARefresherGifHeader {
 
 // MARK: - Override Methods
 
-extension TTARefresherGifHeader {
+extension TTARefresherAutoGifFooter {
     
     override func prepare() {
         super.prepare()
@@ -87,19 +77,11 @@ extension TTARefresherGifHeader {
         super.placeSubviews()
         if gifImageView.constraints.count != 0 { return }
         gifImageView.frame = bounds
-        if stateLabel.isHidden && lastUpdatedTimeLabel.isHidden {
+        if isRefreshingTitleHidden {
             gifImageView.contentMode = .center
         } else {
             gifImageView.contentMode = .right
-            
-            let stateWidth = stateLabel.ttaRefresher.textWidth()
-            var timeWidth: CGFloat = 0
-            if !lastUpdatedTimeLabel.isHidden {
-                timeWidth = lastUpdatedTimeLabel.ttaRefresher.textWidth()
-            }
-            let textWidth = max(stateWidth, timeWidth)
-            gifImageView.frame.size.width = bounds.width * 0.5 - textWidth * 0.5 - labelLeftInset
+            gifImageView.frame.size.width = bounds.width * 0.5 - labelLeftInset - stateLabel.ttaRefresher.textWidth() * 0.5
         }
-        
     }
 }

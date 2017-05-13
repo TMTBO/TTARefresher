@@ -37,18 +37,7 @@ extension ViewController {
 //        header.stateLabel.isHidden = true
 //        header.lastUpdatedTimeLabel.isHidden = true
         header.labelLeftInset = 10
-        var idleImages = [UIImage]()
-        for index in 1...60 {
-            let imageName = "dropdown_anim__000\(index)"
-            guard let image = UIImage(named: imageName) else { continue }
-            idleImages.append(image)
-        }
-        var refreshingImages = [UIImage]()
-        for index in 1...3 {
-            let imageName = "dropdown_loading_0\(index)"
-            guard let image = UIImage(named: imageName) else { continue }
-            refreshingImages.append(image)
-        }
+        let (idleImages, refreshingImages) = prepareAnimationImages()
         header.set(images: idleImages, for: .idle)
         header.set(images: refreshingImages, for: .refreshing)
         tableView.ttaRefresher.header = header
@@ -58,8 +47,11 @@ extension ViewController {
 //        let footer = TTARefresherAutoStateFooter {
 //            self.loadMore()
 //        }
-        let footer = TTARefresherAutoStateFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+        let footer = TTARefresherAutoGifFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
 //        footer.backgroundColor = .cyan 
+        let (idleImages, refreshingImages) = prepareAnimationImages()
+        footer.set(images: idleImages, for: .idle)
+        footer.set(images: refreshingImages, for: .refreshing)
         tableView.ttaRefresher.footer = footer
     }
 }
@@ -77,11 +69,28 @@ extension ViewController {
     
     func loadMore() {
         print("Hello Footer")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             self.cellText = "Hello World"
             self.tableView.ttaRefresher.footer?.endRefreshing()
+//            self.tableView.ttaRefresher.footer?.state = .noMoreData
             self.tableView.reloadData()
         })
+    }
+    
+    func prepareAnimationImages() -> ([UIImage], [UIImage]) {
+        var idleImages = [UIImage]()
+        for index in 1...60 {
+            let imageName = "dropdown_anim__000\(index)"
+            guard let image = UIImage(named: imageName) else { continue }
+            idleImages.append(image)
+        }
+        var refreshingImages = [UIImage]()
+        for index in 1...3 {
+            let imageName = "dropdown_loading_0\(index)"
+            guard let image = UIImage(named: imageName) else { continue }
+            refreshingImages.append(image)
+        }
+        return (idleImages, refreshingImages)
     }
     
 }
