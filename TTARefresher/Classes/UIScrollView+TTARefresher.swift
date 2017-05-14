@@ -12,9 +12,9 @@ import UIKit
 
 extension TTARefresherProxy where Base: UIScrollView {
     
-    public var header: TTARefresherComponent? {
+    public var header: TTARefresherHeader? {
         get {
-            let header = objc_getAssociatedObject(base, &TTARefresherAssociatedKey.headerKey) as? TTARefresherComponent
+            let header = objc_getAssociatedObject(base, &TTARefresherAssociatedKey.headerKey) as? TTARefresherHeader
             return header
         }
         
@@ -29,9 +29,9 @@ extension TTARefresherProxy where Base: UIScrollView {
         }
     }
     
-    public var footer: TTARefresherComponent? {
+    public var footer: TTARefresherFooter? {
         get {
-            let footer = objc_getAssociatedObject(base, &TTARefresherAssociatedKey.footerKey) as? TTARefresherComponent
+            let footer = objc_getAssociatedObject(base, &TTARefresherAssociatedKey.footerKey) as? TTARefresherFooter
             return footer
         }
         

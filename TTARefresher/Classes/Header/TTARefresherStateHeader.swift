@@ -99,14 +99,14 @@ extension TTARefresherStateHeader {
         }
     }
     
-    override func prepare() {
+    override open func prepare() {
         super.prepare()
         set(title: Bundle.TTARefresher.localizedString(for: TTARefresherHeaderText.idle), for: .idle)
         set(title: Bundle.TTARefresher.localizedString(for: TTARefresherHeaderText.pulling), for: .pulling)
         set(title: Bundle.TTARefresher.localizedString(for: TTARefresherHeaderText.refreshing), for: .refreshing)
     }
 
-    override func placeSubviews() {
+    override open func placeSubviews() {
         super.placeSubviews()
         if stateLabel.isHidden { return }
         let noConstrainsOnStatusLabel = stateLabel.constraints.count == 0

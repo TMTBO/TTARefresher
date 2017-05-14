@@ -81,12 +81,12 @@ extension TTARefresherBackGifFooter {
 
 extension TTARefresherBackGifFooter {
     
-    override func prepare() {
+    override open func prepare() {
         super.prepare()
         labelLeftInset = 20
     }
 
-    override func placeSubviews() {
+    override open func placeSubviews() {
         super.placeSubviews()
         if gifImageView.constraints.count != 0 { return }
         gifImageView.frame = bounds

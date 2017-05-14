@@ -75,7 +75,7 @@ open class TTARefresherNormalHeader: TTARefresherStateHeader {
 
 extension TTARefresherNormalHeader {
 
-    override func placeSubviews() {
+    override open func placeSubviews() {
         super.placeSubviews()
         var arrowCenterX = bounds.width * 0.5
         if !stateLabel.isHidden {

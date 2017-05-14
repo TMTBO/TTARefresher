@@ -11,9 +11,9 @@ import UIKit
 open class TTARefresherFooter: TTARefresherComponent {
     
     /// If true, the footer will be shown when there are data, otherwise, footer will be hidden
-    var isAutoHidden = false
+    public var isAutoHidden = false
     
-    var ignoredScrollViewContentInsetBottom: CGFloat = 0
+    public var ignoredScrollViewContentInsetBottom: CGFloat = 0
     
     public init(refreshingHandler: @escaping TTARefresherComponentRefreshingHandler) {
         super.init(frame: .zero)
@@ -35,7 +35,7 @@ open class TTARefresherFooter: TTARefresherComponent {
 
 extension TTARefresherFooter {
     
-    override func prepare() {
+    override open func prepare() {
         super.prepare()
         bounds.size.height = TTARefresherFrameConst.footerHeight
     }

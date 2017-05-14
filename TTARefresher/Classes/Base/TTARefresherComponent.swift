@@ -39,7 +39,7 @@ open class TTARefresherComponent: UIView {
         return state == .refreshing || state == .willRefresh
     }
     
-    public var pullingPercent: CGFloat = 0 {
+    open var pullingPercent: CGFloat = 0 {
         didSet {
             if isRefreshing { return }
             if isAutoChangeAlpha {
@@ -47,7 +47,8 @@ open class TTARefresherComponent: UIView {
             }
         }
     }
-    public var isAutoChangeAlpha = true {
+    
+    public var isAutoChangeAlpha = false {
         didSet {
             if isRefreshing { return }
             if isAutoChangeAlpha {
@@ -80,6 +81,9 @@ open class TTARefresherComponent: UIView {
         state = .idle
     }
     
+    deinit {
+        removeObservers()
+    }
 }
 
 // MARK: - Life Cycle
@@ -117,16 +121,16 @@ extension TTARefresherComponent {
 
 extension TTARefresherComponent {
     
-    func prepare() {
+    open func prepare() {
         autoresizingMask = .flexibleWidth
         backgroundColor = .clear
     }
     
-    func placeSubviews() {}
+    open func placeSubviews() {}
     
-    func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
-    func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
-    func scrollViewPanStateDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
+    open func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
+    open func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
+    open func scrollViewPanStateDidChange(_ change: [NSKeyValueChangeKey : Any]?) {}
 }
 
 // MARK: - Public Methods
@@ -193,8 +197,9 @@ extension TTARefresherComponent {
     }
     
     func removeObservers() {
-        superview?.removeObserver(self, forKeyPath: TTARefresherObserverKeyPath.contentOffset)
-        superview?.removeObserver(self, forKeyPath: TTARefresherObserverKeyPath.contentSize)
+        guard let scrollView = scrollView else { return }
+        scrollView.removeObserver(self, forKeyPath: TTARefresherObserverKeyPath.contentOffset)
+        scrollView.removeObserver(self, forKeyPath: TTARefresherObserverKeyPath.contentSize)
         pan?.removeObserver(self, forKeyPath: TTARefresherObserverKeyPath.panState)
         pan = nil
     }

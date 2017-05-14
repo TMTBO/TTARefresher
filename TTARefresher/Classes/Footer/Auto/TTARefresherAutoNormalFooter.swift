@@ -40,11 +40,11 @@ open class TTARefresherAutoNormalFooter: TTARefresherAutoStateFooter {
 
 extension TTARefresherAutoNormalFooter {
     
-    override func placeSubviews() {
+    override open func placeSubviews() {
         super.placeSubviews()
         if loadingView?.constraints.count != 0 { return }
         var loadingCenterX = bounds.width * 0.5
-        if !isRefreshingTitleHidden {
+        if !stateLabel.isHidden {
             loadingCenterX -= stateLabel.ttaRefresher.textWidth() * 0.5 + labelLeftInset
         }
         let loadingCenterY = bounds.height * 0.5

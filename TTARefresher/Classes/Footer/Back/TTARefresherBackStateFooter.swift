@@ -45,7 +45,7 @@ extension TTARefresherBackStateFooter {
 
 extension TTARefresherBackStateFooter {
     
-    override func prepare() {
+    override open func prepare() {
         super.prepare()
         labelLeftInset = TTARefresherLabelConst.labelLeftInset
         set(title: Bundle.TTARefresher.localizedString(for: TTARefresherBackFooterText.idle), for: .idle)
@@ -54,7 +54,7 @@ extension TTARefresherBackStateFooter {
         set(title: Bundle.TTARefresher.localizedString(for: TTARefresherBackFooterText.noMoreData), for: .noMoreData)
     }
     
-    override func placeSubviews() {
+    override open func placeSubviews() {
         super.placeSubviews()
         if stateLabel.constraints.count != 0 { return }
         stateLabel.frame = bounds

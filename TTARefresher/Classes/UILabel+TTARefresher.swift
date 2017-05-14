@@ -1,5 +1,5 @@
 //
-//  UILabel+Refresher.swift
+//  UILabel+TTARefresher.swift
 //  Pods
 //
 //  Created by TobyoTenma on 13/05/2017.

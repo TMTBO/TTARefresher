@@ -64,7 +64,7 @@ open class TTARefresherBackFooter: TTARefresherFooter {
 
 extension TTARefresherBackFooter {
     
-    override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    override open func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentSizeDidChange(change)
         if state == .refreshing { return }
         guard let scrollView = scrollView else { return }
@@ -95,7 +95,7 @@ extension TTARefresherBackFooter {
         }
     }
     
-    override func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    override open func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentSizeDidChange(change)
         guard let scrollView = scrollView else { return }
         let contentHeight = scrollView.contentSize.height + ignoredScrollViewContentInsetBottom

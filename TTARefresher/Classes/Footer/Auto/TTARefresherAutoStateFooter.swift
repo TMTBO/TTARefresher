@@ -10,19 +10,18 @@ import UIKit
 
 open class TTARefresherAutoStateFooter: TTARefresherAutoFooter {
 
-    lazy var stateLabel: UILabel = {
+    open lazy var stateLabel: UILabel = {
         let label = UILabel.TTARefresher.refresherLabel()
         self.addSubview(label)
         return label
     }()
     var stateTitles = [TTARefresherState: String]()
     var labelLeftInset = TTARefresherLabelConst.labelLeftInset
-    var isRefreshingTitleHidden = false
     
     open override var state: TTARefresherState {
         didSet {
             if state == oldValue { return }
-            if isRefreshingTitleHidden && state == .refreshing {
+            if stateLabel.isHidden && state == .refreshing {
                 stateLabel.text = nil
             } else {
                 stateLabel.text = stateTitles[state]
@@ -54,7 +53,7 @@ extension TTARefresherAutoStateFooter {
 
 extension TTARefresherAutoStateFooter {
 
-    override func prepare() {
+    override open func prepare() {
         super.prepare()
         labelLeftInset = TTARefresherLabelConst.labelLeftInset
         set(title: Bundle.TTARefresher.localizedString(for: TTARefresherAutoFooterText.idle), for: .idle)
@@ -65,7 +64,7 @@ extension TTARefresherAutoStateFooter {
         stateLabel.addGestureRecognizer(tap)
     }
     
-    override func placeSubviews() {
+    override open func placeSubviews() {
         super.placeSubviews()
         if stateLabel.constraints.count != 0 { return }
         stateLabel.frame = bounds

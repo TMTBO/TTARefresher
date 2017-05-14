@@ -10,9 +10,9 @@ import UIKit
 
 open class TTARefresherAutoFooter: TTARefresherFooter {
 
-    var isAutoRefresh = true
+    public var isAutoRefresh = true
     /// The percent when the footer appear will get refresh, default is 1.0
-    var triggerAutoRefreshPercent: CGFloat = 1.0
+    public var triggerAutoRefreshPercent: CGFloat = 1.0
     
     open override var state: TTARefresherState {
         didSet {
@@ -62,13 +62,13 @@ open class TTARefresherAutoFooter: TTARefresherFooter {
 
 extension TTARefresherAutoFooter {
     
-    override func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    override open func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentSizeDidChange(change)
         guard let scrollView = scrollView else { return }
         frame.origin.y = scrollView.contentSize.height
     }
     
-    override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    override open func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentOffsetDidChange(change)
         guard let scrollView = scrollView else { return }
         if state != .idle || !isAutoRefresh || frame.origin.y == 0 { return }
@@ -82,7 +82,7 @@ extension TTARefresherAutoFooter {
         beginRefreshing()
     }
     
-    override func scrollViewPanStateDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    override open func scrollViewPanStateDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewPanStateDidChange(change)
         guard let scrollView = scrollView else { return }
         if state != .idle { return }

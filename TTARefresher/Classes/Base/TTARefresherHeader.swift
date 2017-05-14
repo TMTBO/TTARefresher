@@ -70,7 +70,7 @@ open class TTARefresherHeader: TTARefresherComponent {
 
 extension TTARefresherHeader {
     
-    public override func endRefreshing(_ completionHandler: TTARefresherComponentEndCompletionHandler?) {
+    public override func endRefreshing(_ completionHandler: TTARefresherComponentEndCompletionHandler? = nil) {
         DispatchQueue.main.async { [weak self] in
             guard let `self` = self else { return }
             self.state = .idle
@@ -89,18 +89,18 @@ extension TTARefresherHeader {
 
 extension TTARefresherHeader {
     
-    override func prepare() {
+    override open func prepare() {
         super.prepare()
         recorrectLastUpdatedTime()
         bounds.size.height = TTARefresherFrameConst.headerHeight
     }
     
-    override func placeSubviews() {
+    override open func placeSubviews() {
         super.placeSubviews()
         frame.origin.y = -bounds.height
     }
     
-    override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    override open func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentOffsetDidChange(change)
         guard let scrollView = scrollView else { return }
         if state == .refreshing {
