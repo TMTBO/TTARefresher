@@ -10,7 +10,7 @@ import UIKit
 
 open class TTARefresherBackStateFooter: TTARefresherBackFooter {
     
-    lazy var stateLabel: UILabel = {
+    public lazy var stateLabel: UILabel = {
         let label = UILabel.TTARefresher.refresherLabel()
         self.addSubview(label)
         return label

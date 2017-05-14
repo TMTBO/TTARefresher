@@ -47,8 +47,9 @@ extension ViewController {
 //        let footer = TTARefresherAutoStateFooter {
 //            self.loadMore()
 //        }
-        let footer = TTARefresherAutoGifFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
-//        footer.backgroundColor = .cyan 
+        let footer = TTARefresherBackGifFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+//        footer.backgroundColor = .cyan
+        footer.stateLabel.isHidden = true
         let (idleImages, refreshingImages) = prepareAnimationImages()
         footer.set(images: idleImages, for: .idle)
         footer.set(images: refreshingImages, for: .refreshing)
