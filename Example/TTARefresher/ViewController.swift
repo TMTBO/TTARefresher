@@ -164,7 +164,7 @@ extension ViewController {
     
     func loadNew() {
         print("Hello Header")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
             guard let `self` = self else { return }
             self.testTitles = ["This is Default Test Data", "This is Default Test Data"]
             self.tableView.ttaRefresher.header?.endRefreshing()
@@ -174,7 +174,7 @@ extension ViewController {
     
     func loadMore() {
         print("Hello Footer")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
             guard let `self` = self else { return }
             for _ in 0..<5 {
                 self.testTitles.append("Random Test Data \(arc4random_uniform(10000))")
@@ -186,7 +186,7 @@ extension ViewController {
     
     func endLoadMore() {
         print("Hello Footer")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
             guard let `self` = self else { return }
             for _ in 0..<5 {
                 self.testTitles.append("Random Test Data \(arc4random_uniform(10000))")
@@ -194,7 +194,7 @@ extension ViewController {
             self.tableView.ttaRefresher.footer?.endRefreshing()
             self.tableView.ttaRefresher.footer?.endRefreshWithNoMoreData()
             // or
-//            self.tableView.ttaRefresher.footer?.state = .noMoreData
+            //  self.tableView.ttaRefresher.footer?.state = .noMoreData
             self.tableView.reloadData()
         })
     }

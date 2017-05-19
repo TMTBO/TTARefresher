@@ -10,7 +10,7 @@ import UIKit
 
 open class TTARefresherBackNormalFooter: TTARefresherBackStateFooter {
 
-    public var indicatotStyle = UIActivityIndicatorViewStyle.gray {
+    public var indicatorStyle = UIActivityIndicatorViewStyle.gray {
         didSet {
             loadingView = nil
             setNeedsLayout()
@@ -25,7 +25,7 @@ open class TTARefresherBackNormalFooter: TTARefresherBackStateFooter {
     }()
     
     lazy var loadingView: UIActivityIndicatorView? = {
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: self.indicatotStyle)
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: self.indicatorStyle)
         indicator.hidesWhenStopped = true
         self.addSubview(indicator)
         return indicator

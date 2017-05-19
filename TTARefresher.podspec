@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'TTARefresher'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of TTARefresher.'
+  s.summary          = 'TTARefresher is Swift version of `MJRefresh`'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+TTARefresher is Swift version of `MJRefresh`, TTARefresher can work with UIScrollView, UITableView, UICollectionView and UIWebView, WKWebView. Othewise, THANKS the author of `MJRefresh`
                        DESC
 
   s.homepage         = 'https://github.com/TMTBO/TTARefresher'
