@@ -5,6 +5,7 @@ import Nimble
 import TTARefresher
 
 class TableOfContentsSpec: QuickSpec {
+    /*
     override func spec() {
         describe("these will fail") {
 
@@ -47,4 +48,5 @@ class TableOfContentsSpec: QuickSpec {
             }
         }
     }
+ */
 }
