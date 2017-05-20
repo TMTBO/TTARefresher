@@ -15,13 +15,13 @@
 
 [Installation](#Installation)
 
-[File Structures](#File Structures)
+[File Structures](#File_Structures)
 
 [Api](#Api)
 
-* [Name Space](#Name Space)
+* [Name Space](#Name_Space)
 
-* [Refresher States](#Refresher States)
+* [Refresher States](#Refresher_States)
 
 * [TTARefresherComponent](#TTARefresherComponent)
 
@@ -52,7 +52,7 @@
 
 * [Footer](#Footer)
 
-[How to use ](#How to use )
+[How to use ](#How_to_use )
 
 [Author](#Author)
 
@@ -75,7 +75,7 @@ it, simply add the following line to your Podfile:`pod "TTARefresher"`
 
 	Drag All files in the MJRefresh folder to project, import the main file：`import TTARefresher`
 
-## <a name="File Structures"></a>File Structures
+## <a name="File_Structures"></a>File Structures
 
 		TTARefresherComponent
 			|
@@ -107,7 +107,7 @@ it, simply add the following line to your Podfile:`pod "TTARefresher"`
 	 
 ## <a name="Api"></a>Api
 
-**<a name="Name Space"></a>Name Space**
+**<a name="Name_Space"></a>Name Space**
 
     /// For the Instance Methods
     public var ttaRefresher: TTARefresher.TTARefresherProxy<Self>
@@ -124,7 +124,7 @@ it, simply add the following line to your Podfile:`pod "TTARefresher"`
     /// Data Count in total
     public var totalDataCount: Int
 
-**<a name="Refresher States"></a>Refresher States**
+**<a name="Refresher_States"></a>Refresher States**
 
 		public enum TTARefresherState : Int {
 			/// Normal State
@@ -272,7 +272,7 @@ extension TTARefresherComponent {
 
 ```
 
-## <a name="How to use"></a>How to use 
+## <a name="How_to_use"></a>How to use 
 	 
 ### <a name="Header"></a>Header
 ---- 
@@ -369,7 +369,7 @@ extension TTARefresherComponent {
 
 ## <a name="Author"></a>Author
 
-TMTBO, tmtbo@hotmail.com
+TobyoTenma, tmtbo@hotmail.com
 
 ## <a name="License"></a>License
 
