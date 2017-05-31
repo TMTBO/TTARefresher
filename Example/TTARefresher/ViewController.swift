@@ -277,6 +277,7 @@ extension ViewController {
             default:
                 return
             }
+            tableView.ttaRefresher.header?.state = .idle
             tableView.ttaRefresher.header = header
         } else if indexPath.section == 1 {
             let footer: TTARefresherFooter
@@ -300,6 +301,7 @@ extension ViewController {
             default:
                 return
             }
+            tableView.ttaRefresher.footer?.state = .idle
             tableView.ttaRefresher.footer = footer
         }
     }
